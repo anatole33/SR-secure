@@ -42,14 +42,14 @@ for scenario in scenarios:
 
 
 # plot bars
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(8, 5))
 plt.rcParams.update({'font.size':14})
 x = np.arange(len(scenarios))  # the label locations
 plt.xticks(x, scenarios)
 width = 0.5  # the width of the bars
-plt.bar(x - width/3, aggregates_time["SR"], width/3, color='paleturquoise', edgecolor='black')
-plt.bar(x , aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black')
-plt.bar(x + width/3, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black')
+plt.bar(x - width/3, aggregates_time["SR"], width/3, color='paleturquoise', edgecolor='black', hatch='/')
+plt.bar(x , aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black', hatch='x')
+plt.bar(x + width/3, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
 plt.ylabel('Time (seconds)')
 plt.legend(algos_names, bbox_to_anchor=(0.3, 0.9), ncol=1)
 plt.savefig(DIR_EXP + "plot_jester.pdf")
@@ -83,10 +83,10 @@ plt.rcParams.update({'font.size':14})
 x = np.arange(len(scenarios))  # the label locations
 plt.xticks(x, scenarios)
 width = 0.5  # the width of the bars
-plt.bar(x - width/2, aggregates_time["SR"], width/3, color='paleturquoise', edgecolor='black')
-plt.bar(x - width/6, aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black')
-plt.bar(x + width/6, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black')
-plt.bar(x + width/2, aggregates_time["SR_SP"], width/3, color='blue', edgecolor='black')
+plt.bar(x - width/2, aggregates_time["SR"], width/3, color='paleturquoise', edgecolor='black', hatch='/')
+plt.bar(x - width/6, aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black', hatch='x')
+plt.bar(x + width/6, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
+plt.bar(x + width/2, aggregates_time["SR_SP"], width/3, color='cornflowerblue', edgecolor='black', hatch='+')
 plt.yscale('log')
 plt.ylabel('Time (seconds)')
 plt.legend(algos_names, bbox_to_anchor=(0.3, 0.9), ncol=1)

@@ -5,12 +5,12 @@ import time
 from tools import *
 from Crypto.Random import get_random_bytes
 
-#               SUCCESSIVE REJECTS - SECURE 2
+#               SUCCESSIVE REJECTS WITH CENTRALIZED COMPARISON
 
 # Self made useful functions are in tools
 # This is the mother file of SR_S1 and SR_SP so it has all functions of nodes
 
-# Step "number" refers to the steps as described in main.pdf section 3.4
+# Step "number" refers to the steps as described in main.pdf section 3.3
 
 class DataOwner():
         # Initialize DataOwner, who knows K the number of arms, mu a list of K random

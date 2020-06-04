@@ -1,10 +1,10 @@
 from SR_S2 import *
 
-#               SUCCESSIVE REJECTS - SECURE 1
+#               SUCCESSIVE REJECTS WITH RING COMPARISON
 
 # Import unchanged functions from SR_S2
 
-# Step "number" refers to the steps as described in main.pdf section 3.3
+# Step "number" refers to the steps as described in main.pdf section 3.2
 
 class Ring_BAI(Best_Arm_Identificator):
         # Step 2: Send the components n_j, first and next for each candidate node

@@ -7,7 +7,7 @@ from tools import *
 
 # Useful self made functions are in tools
 
-# Step "number" refers to steps as defined in main.pdf section 4.1
+# Step "number" refers to steps as defined in main.pdf section 3.1
 
 class DataOwner_basic():
         # Initialize DataOwner, who knows K the number of arms, mu a list of K random

@@ -1,12 +1,12 @@
 from SR_2 import *
 
-#               SUCCESSIVE REJECTS whith distribution 1
+#               SUCCESSIVE REJECTS WITH RING COMPARISON
 
 # It is the same algorithm as SR_S1 but without any encryption
 
 # Import unchanged functions from SR_2
 
-# Step "number" refers to steps as described in main.pdf section 3.3
+# Step "number" refers to steps as described in main.pdf section 3.2
 
 class Ring_BAI(Best_Arm_Identificator_basic):
         def __init__(self, K):

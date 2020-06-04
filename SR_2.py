@@ -1,13 +1,13 @@
 from SR import *
 
-#               SUCCESSIVE REJECTS whith distribution 2
+#               SUCCESSIVE REJECTS WITH CENTRALIZED COMPARISON
 
 # It is the same algorithm as SR_S2 but without any encryption
 
 # Self made useful functions are in tools
 # Import unchanged functions from SR
 
-# Step "number" refers to the steps as described in main.pdf section 3.4
+# Step "number" refers to the steps as described in main.pdf section 3.3
 
 class DataOwner(DataOwner_basic):
         # Step 0: Gives to node Ri a mu, chosen with tau, and the random_mode

@@ -1,11 +1,11 @@
 from SR_S2 import *
 from phe import paillier
 
-#                SUCCESSIVE REJECTS - SECURE 2 with Paillier
+#                SUCCESSIVE REJECTS WITH PAILLIER
 
 # Import unchanged functions from SR_S2
 
-# Step "number" refers to the steps as described in main.pdf section 3.5
+# Step "number" refers to the steps as described in main.pdf section 3.4
 
 class Paillier_DataOwner(DataOwner):
         # Initialize DataOwner, who knowns K the number of arms, mu a list
