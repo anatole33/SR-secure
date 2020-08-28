@@ -12,7 +12,7 @@ nb_runs = 30
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
 algos = ["SR", "SR_1", "SR_2", "SR_S1", "SR_S2"]
-algos_names = ["SR", "SR-R'", "SR-C'", "SR-R", "SR-C"]
+algos_names = ["SR", "SR-Ring'", "SR-Centralized'", "SR-Ring", "SR-Centralized"]
 
 
 ######### Experiment 2: Vary K for fixed N and random_mode = 1 (bernoulli)
@@ -29,7 +29,7 @@ for K in K_vals:
         scenario = "_K_" + str(K)
         input_file = DIR_EXP2 + "scenario" + scenario + ".txt"
         f = open(input_file, "w")
-        f.write(str(K) + "\n1" + "\n0.8" + "\n0.8" * (K-1))
+        f.write(str(K) + "\n1" + "\n0.9" + "\n0.8" * (K-1))
         f.close()
         R_list = dict()
         for algo in algos:
@@ -43,4 +43,4 @@ for K in K_vals:
                 check_results(R_list, algos)
 
 # generate plot
-plot_lines_K("_vary_K", algos, algos_names, "Number of arms K", False, K_vals, aggregates_time, DIR_EXP2)
+plot_lines_K("K_varies", algos, algos_names, "Number of arms K", False, K_vals, aggregates_time, DIR_EXP2)

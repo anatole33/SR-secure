@@ -214,11 +214,12 @@ def SR_S2_computation (N, K, random_mode, mu):
         assert K > 1, 'K must be greater than 1'
         assert N > 0, 'N must be greater than 0'
 
-        t_start = time.time()
         # Initialisation of the key shared by all participants except Comp,
         # and the key shared by Comp and the nodes R
         key = get_random_bytes(32)
         key_comp = get_random_bytes(32)
+
+        t_start = time.time()
 
         # Initialisation of participants
         DO = DataOwner(K, random_mode, mu, key)

@@ -97,10 +97,11 @@ def SR_S1_computation (N, K, random_mode, mu):
         assert K > 1, 'K must be greater than 1'
         assert N > 0, 'N must be greater than 0'
 
-        t_start = time.time()
         # Initialize the key shared by all participants in the network
         key = get_random_bytes(32)
 
+        t_start = time.time()
+        
         # Initialization of participants
         DO = DataOwner(K, random_mode, mu, key)
         # User is the Data Client

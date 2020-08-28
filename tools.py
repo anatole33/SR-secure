@@ -173,16 +173,16 @@ def check_results(R_list, algos):
 
 # Used in script_N
 def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, left_x, left_data, right_aggregates_all, right_message, OUTPUT_DIR):
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(12, 4))
         plt.rcParams.update({'font.size':14})
 
         # left : plot one line for each algorithm
-        ax = plt.subplot(221)
+        ax = plt.subplot(121)
         markers = ('.', 'v', '*', 'd', 'x', 'o')
         
         for algo in algos:
-                plt.plot(left_x, left_data[algo], marker=markers[algos.index(algo)])
-        plt.legend(algos_names, bbox_to_anchor=(0.3, -0.3))
+                plt.plot(left_x, left_data[algo], marker=markers[algos.index(algo)], fillstyle='none', markersize=12)
+        plt.legend(algos_names, bbox_to_anchor=(1.1, 0.7))
 
         if left_xlog:
                 plt.xscale('log')
@@ -190,37 +190,63 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         else:
                 plt.xticks(left_x, left_x)
                 font_size_pie = 6
-        plt.yscale('log')
+        #plt.yscale('log')
         plt.xlabel(left_xlabel)
         plt.ylabel('Time (seconds)')
-        plt.subplots_adjust(top=0.9, bottom=0.2)
+
+        plt.subplots_adjust(top=0.94, bottom=0.15)
+
+        plt.savefig(OUTPUT_DIR + "plot_lines_" + scenario + ".pdf")
+        plt.clf()
 
         # right : pie chart only for some point
-        colors = ["#FF0033","#2D5DF5","#B75F31","#22792E","#413DE7","#19DBAD","#7653C2","#F3AE32","#1B9978","#5A82F1","#E9953F","#EBD86D","#3BECA4","#1E0968","#2952B0","#2E01A6","#2613DF","#5AC0AB","#1FD9EF","#441A71","#AA64AC","#960DC9","#BF6434","#21C13D","#1A8990","#B75EC4","#CFDE9F","#04350E","#B3CF0A","#E26F5D","#2EFD6E","#BEA469","#3F4696","#F46962","#162FE9","#E26CD6","#6433F1"]
+        
+        plt.figure(figsize=(12, 4.2))
+        plt.rcParams.update({'font.size':16})
+        
+        #colors = ["#FF0033","#2D5DF5","#B75F31","#22792E","#413DE7","#19DBAD","#7653C2","#F3AE32","#1B9978","#5A82F1","#E9953F","#EBD86D","#3BECA4","#1E0968","#2952B0","#2E01A6","#2613DF","#5AC0AB","#1FD9EF","#441A71","#AA64AC","#960DC9","#BF6434","#21C13D","#1A8990","#B75EC4","#CFDE9F","#04350E","#B3CF0A","#E26F5D","#2EFD6E","#BEA469","#3F4696","#F46962","#162FE9","#E26CD6","#6433F1"]
+
+        
 
         # SR_S1 N = 100 000
-        plt.subplot(222)                
-        plt.title("Zoom on SR-R for " + right_message)
+        ax = plt.subplot(121)                
+        plt.title("Zoom on SR-Ring for " + right_message)
         K = len(right_aggregates_all["SR_S1"].keys()) - 3
         components = ["time BAI"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S1"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
         # If time values are too small the pie is not a pie
         time_scaled = [time_per_component[i]*1000 for i in range(len(time_per_component))]
-        plt.pie(time_scaled, labels=components, colors=colors, textprops={'fontsize': 12})
+
+        cm = plt.get_cmap('gist_rainbow')
+        NUM_COLORS = len(components) + 1
+        colors = []
+        for i in range(NUM_COLORS):
+                colors.append(cm(1.*i/NUM_COLORS))
+        
+        wedges, _ = ax.pie(time_scaled, labels=components, colors=colors, textprops={'fontsize': 16})
+
+        # Sperarate the slices of the pie with black color
+        for w in wedges:
+                w.set_edgecolor('black')
 
         # SR_S2 N = 100 000
-        plt.subplot(224)                
-        plt.title("Zoom on SR-C for " + right_message)
+        ax = plt.subplot(122)                
+        plt.title("Zoom on SR-Centralized for " + right_message)
         K = len(right_aggregates_all["SR_S2"].keys()) - 4
-        components = ["time BAI", "time R1", "time Comp"] + ["time R" + str(i) for i in range(2, K+1)]
+        components = ["time BAI", "time Comp"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S2"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
         # If time values are too small the pie is not a pie
         time_scaled = [time_per_component[i]*1000 for i in range(len(time_per_component))]
-        plt.pie(time_scaled, labels=components, colors=colors, textprops={'fontsize': 12})
 
-        plt.savefig(OUTPUT_DIR + "plot_scenario" + scenario + ".pdf")
+        wedges, _ = ax.pie(time_scaled, labels=components, colors=colors, textprops={'fontsize': 16})
+
+        # Sperarate the slices of the pie with black color
+        for w in wedges:
+                w.set_edgecolor('black')
+        
+        plt.savefig(OUTPUT_DIR + "plot_pie_" + scenario + ".pdf")
         plt.clf()
 
 # Used in script_K
@@ -232,8 +258,8 @@ def plot_lines_K(scenario, algos, algos_names, left_xlabel, left_xlog, left_x, l
         plt.subplot(121)
         markers = ('.', 'v', '*', 'd', 'x', 'o')
         for algo in algos:
-                plt.plot(left_x, left_data[algo], marker=markers[algos.index(algo)])
-        plt.legend(algos_names, bbox_to_anchor=(1.5, 0.75))
+                plt.plot(left_x, left_data[algo], marker=markers[algos.index(algo)], fillstyle='none', markersize=12)
+        plt.legend(algos_names, bbox_to_anchor=(1.7, 0.75))
 
         if left_xlog:
                 plt.xscale('log')
@@ -241,10 +267,10 @@ def plot_lines_K(scenario, algos, algos_names, left_xlabel, left_xlog, left_x, l
         else:
                 plt.xticks(left_x, left_x)
                 font_size_pie = 6
-        plt.yscale('log')
+        #plt.yscale('log')
         plt.xlabel(left_xlabel)
         plt.ylabel('Time (seconds)')
         plt.subplots_adjust(top=0.9, bottom=0.2)
 
-        plt.savefig(OUTPUT_DIR + "plot_scenario" + scenario + ".pdf")
+        plt.savefig(OUTPUT_DIR + "plot_" + scenario + ".pdf")
         plt.clf()

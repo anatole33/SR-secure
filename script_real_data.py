@@ -13,11 +13,11 @@ nb_runs = 30
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
 algos = ["SR", "SR_S1", "SR_S2"]
-algos_names = ["SR", "SR-R", "SR-C"]
+algos_names = ["SR", "SR-Ring", "SR-Centralized"]
 
 ######### Experiment on real world data
 # Directory must already exist and scenarios must be defined
-scenarios = ["Jester-small", "Jester-large"]
+scenarios = ["Jester_small", "Jester_large", "MovieLens"]
 DIR_EXP = "experiment_real_data/"
 
 N = 100000
@@ -51,14 +51,14 @@ plt.bar(x - width/3, aggregates_time["SR"], width/3, color='paleturquoise', edge
 plt.bar(x , aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black', hatch='x')
 plt.bar(x + width/3, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
 plt.ylabel('Time (seconds)')
-plt.legend(algos_names, bbox_to_anchor=(0.3, 0.9), ncol=1)
-plt.savefig(DIR_EXP + "plot_jester.pdf")
+plt.legend(algos_names, bbox_to_anchor=(0.4, 0.9), ncol=1)
+plt.savefig(DIR_EXP + "plot_bernoulli.pdf")
 
 
 nb_runs = 5
-scenarios = ["MovieLens"]
+scenarios = ["Jester_small_uniform", "Jester_large_uniform", "MovieLens_uniform"]
 algos = ["SR", "SR_S1", "SR_S2", "SR_SP"]
-algos_names = ["SR", "SR-R", "SR-C", "SR-P"]
+algos_names = ["SR", "SR-Ring", "SR-Centralized", "SR-Paillier"]
 aggregates_time = dict()
 for algo in algos:
         aggregates_time[algo] = list()
@@ -89,5 +89,5 @@ plt.bar(x + width/6, aggregates_time["SR_S2"], width/3, color='deepskyblue', edg
 plt.bar(x + width/2, aggregates_time["SR_SP"], width/3, color='cornflowerblue', edgecolor='black', hatch='+')
 plt.yscale('log')
 plt.ylabel('Time (seconds)')
-plt.legend(algos_names, bbox_to_anchor=(0.3, 0.9), ncol=1)
-plt.savefig(DIR_EXP + "plot_movie.pdf")
+plt.legend(algos_names, bbox_to_anchor=(0.4, 0.9), ncol=1)
+plt.savefig(DIR_EXP + "plot_uniform.pdf")

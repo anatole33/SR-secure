@@ -88,15 +88,12 @@ class Paillier_BAI(Best_Arm_Identificator):
 # Node responsible of choosing the minimal element to remove. Only he can decrypt the
 # sum of rewards, but he does not know which reward correspond to which arm
 class Paillier_Comparator():
-        def __init__(self):
+        def __init__(self, pk_comp, sk_comp):
                 self.time = 0
                 t = time.time()
-                self.pk, self.sk = paillier.generate_paillier_keypair()
+                self.pk = pk_comp
+                self.sk = sk_comp
                 self.time += time.time() - t
-
-        # Share his public key for Paillier
-        def share_pk_comp(self):
-                return self.pk
 
         # Step 3: Receive a permuted list of cumulative rewards. Decrypt it and
         # send back the index of its minimal element
@@ -116,13 +113,14 @@ def SR_SP_computation (N, K, random_mode, mu):
 
         assert type(random_mode) == tuple and random_mode[0] == 0, 'random mode invalid'
 
-        t_start = time.time()
         # Initialisation of the key shared by all participants except Comp
         key = get_random_bytes(32)
+        pk_comp, sk_comp = paillier.generate_paillier_keypair()
+
+        t_start = time.time()
 
         # Initialisation of participants
-        Comp = Paillier_Comparator()
-        pk_comp = Comp.share_pk_comp()        
+        Comp = Paillier_Comparator(pk_comp, sk_comp)       
         DO = Paillier_DataOwner(K, random_mode, mu, key, pk_comp)
         # User is the Data Client
         U = User(N, key)
@@ -172,4 +170,9 @@ def SR_SP_computation (N, K, random_mode, mu):
 
 if __name__ == "__main__":
         run_experiment(SR_SP_computation)
-
+"""
+random.seed(1)
+N = 50; K = 3; random_mode = (0,5)
+mu = [30,30] + [28] * (K-2)
+print(SR_SP_computation(N, K, random_mode, mu))
+"""
