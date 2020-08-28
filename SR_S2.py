@@ -276,11 +276,3 @@ def SR_S2_computation (N, K, random_mode, mu):
 
 if __name__ == "__main__":
         run_experiment(SR_S2_computation)
-
-# ----- Tests -----
-"""
-random.seed(1)
-N = 50; K = 5; random_mode = (0,5)
-mu = [30,30] + [28] * (K-2)
-print(SR_S2_computation(N, K, random_mode, mu))
-"""

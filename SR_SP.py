@@ -170,9 +170,3 @@ def SR_SP_computation (N, K, random_mode, mu):
 
 if __name__ == "__main__":
         run_experiment(SR_SP_computation)
-"""
-random.seed(1)
-N = 50; K = 3; random_mode = (0,5)
-mu = [30,30] + [28] * (K-2)
-print(SR_SP_computation(N, K, random_mode, mu))
-"""
