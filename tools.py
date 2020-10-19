@@ -182,7 +182,7 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         
         for algo in algos:
                 plt.plot(left_x, left_data[algo], marker=markers[algos.index(algo)], fillstyle='none', markersize=12)
-        plt.legend(algos_names, bbox_to_anchor=(1.1, 0.7))
+        plt.legend(algos_names, bbox_to_anchor=(1.8, 0.7))
 
         if left_xlog:
                 plt.xscale('log')
