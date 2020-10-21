@@ -1,21 +1,18 @@
-This is the code related to the paper **Secure Best Arm Identification in
-Stochastic Bandits**.
+This code allows to reproduce the empirical evaluation from our paper **Secure Protocols for Best Arm Identification in Stochastic Multi-Armed Bandits**.
+We detail the experimental setup and results in Section 4.6 and 5.5 of our paper.
 
-SR is the simple successive rejects algorithm with no encryption nor
-distribution, as shown in Section 3.2.
-`SR_S1.py` is SR-Ring (Section 3.3) and `SR_S2.py` is SR-Centralized (Section 3.4).
-`SR_1.py` and `SR_2.py` are non encrypted versions of SR_S1 and SR_S2.
-`SR_SP.py` is SR-Paillier (Section 6).
-`SR_Secure_ISPEC` is the protocol as in the first-version paper.
+We implemented our all protocols: SR-Ring (`SR_S1.py`), SR-Centralized (`SR_S2.py`), and SR-Paillier (`SR_SP.py`).
 
-`script_N.py` allows to reproduce the figures 8 and 9 in its associated folder:
-`experiment_N`. `script_K.py` the figure 10, `script_SR_SP.py` the figures 14 and
-15, `script_real_data.py` the figures 11 and 16.
+We also implemented: the standard Successive Rejects (`SR.py`), two distributed protocols SR-Ring' (`SR_1.py`) and SR-Centralized' (`SR_2.py`) that are the same as SR-Ring, SR-Centralized, after removing all encryptions/decryptions such that all messages are communicated in clear between participants, and the old protocol proposed in the conference version of our paper (`SR_Secure_ISPEC`). 
 
-All scripts generate the figures using the results of previous runs, the
-`*.txt` files in experimental folders. If you wish to run again the algorithms,
-uncomment in the script of your interest the line starting with
-`#os.system("python3 " + algo + ".py "...`
+The scripts to reproduce our figures are:
+
+- `script_N.py` generates Fig. 8(a) and 8(b) in the folder `experiment_N`.
+- `script_K.py` generates Fig. 8(c) in the folder `experiment_K`.
+- `script_SR_SP.py` generates Fig. 11(a) and 11(b) in the folder `experiment_SR_SP`.
+- `script_real_data.py` generates Fig. 8(d) and 11(c) in the folder `experiment_real_data`.
+
+All these scripts generate the figures using the results of our previous runs, saved as `*.txt` files in the corresponding folders. If you want to re-run the protocols, you simply need to uncomment the lines starting with `#os.system("python3 " + algo + ".py "...` in the scripts
 
 The script `install-python-and-libraries.sh` installs Python3 and the necessary
 libraries.
