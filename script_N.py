@@ -7,7 +7,7 @@ from tools import parse_json_output, check_results, plot_lines_and_pie
 import warnings
 warnings.simplefilter("ignore")
 
-nb_runs = 20
+nb_runs = 200
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
@@ -38,7 +38,7 @@ for scenario in scenarios:
                 for algo in algos:
                         print ("*" * 10 + " Scenario=", scenario, "N=", N, "algo=", algo)
                         output_file = DIR_EXP + "scenario_" + scenario + "_N_" + str(N) + "_" + algo + ".txt"
-                        #os.system("python3 " + algo + ".py " + str(nb_runs) + " " + str(N) + " " + input_file + " " + output_file + " " + str(set_random))
+                        os.system("python3 " + algo + ".py " + str(nb_runs) + " " + str(N) + " " + input_file + " " + output_file + " " + str(set_random))
                         R_list[algo], aggregate_time, aggregates_all[algo] = parse_json_output(output_file)
                         aggregates_time[algo].append(aggregate_time)
                 # check that all algorithms output the same result if the random seed is fixed

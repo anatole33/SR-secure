@@ -1,4 +1,4 @@
-from SR_S2P import *
+from SR_SP import *
 
 #               SUCCESSIVE REJECTS - SECURE as in ISPEC2019
 
