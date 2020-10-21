@@ -61,10 +61,9 @@ ax = plt.subplot(121)
 markers = ('x', 'o', '*', '.', '', '', '')
 for algo in algos:
         plt.plot(N_vals, aggregates_time[algo], marker=markers[algos.index(algo)], fillstyle='none', markersize=10)
-plt.legend(algos_names, bbox_to_anchor=(2.4, 0.75))
+plt.legend(algos_names, bbox_to_anchor=(2.25, 0.75))
 
 plt.xticks(N_vals, N_vals)
-font_size_pie = 6
 plt.xlabel("Budget N")
 plt.ylabel('Time (seconds)')
 plt.subplots_adjust(top=0.92, bottom=0.2)
@@ -78,8 +77,9 @@ my_K = 10
 input_file = "scenario_K=" + str(my_K) + ".txt"
 output_file = DIR + "K_" + str(my_K) + "_N_" + str(my_N) + "_SR_SP.txt"
 a, b, aggregates_all["SR_SP"] = parse_json_output(output_file)
-plt.figure(figsize=(6, 6))
-plt.title("Zoom on SR-Paillier for N = " + str(my_N) + " K=" + str(my_K))
+plt.figure(figsize=(5, 4))
+plt.rcParams.update({'font.size':14})
+plt.title("Zoom on SR-Paillier, N=" + str(my_N) + ", K=" + str(my_K))
 components = ["time Comp", "time DO", "time BAI"]
 time_per_component = [aggregates_all["SR_SP"][component] for component in components]
 components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
