@@ -7,7 +7,7 @@ from tools import parse_json_output, check_results
 import warnings
 warnings.simplefilter("ignore")
 
-nb_runs = 30
+nb_runs = 100
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
@@ -76,6 +76,8 @@ plt.title("Zoom on SR-Paillier, N=" + str(my_N) + ", K=" + str(my_K))
 components = ["time Comp", "time DO", "time BAI"]
 time_per_component = [aggregates_all["SR_SP"][component] for component in components]
 components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-wedges, _ = plt.pie(time_per_component, labels=components, colors=["red", "black", "white"], textprops={'fontsize': 18})
+wedges, _ = plt.pie(time_per_component, labels=components, colors=["gray", "pink", "black"], textprops={'fontsize': 18})
+for w in wedges:
+	w.set_edgecolor("none")
 plt.savefig(DIR + "plot_pie_SR_P" + ".pdf")
 plt.clf()
