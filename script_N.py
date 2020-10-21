@@ -7,18 +7,17 @@ from tools import parse_json_output, check_results, plot_lines_and_pie
 import warnings
 warnings.simplefilter("ignore")
 
-nb_runs = 100
+nb_runs = 20
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
-algos = ["SR", "SR_1", "SR_2", "SR_S1", "SR_S2"]
-algos_names = ["SR", "SR-Ring'", "SR-Centralized'", "SR-Ring", "SR-Centralized"]
+algos = ["SR_S1", "SR_S2", "SR_1", "SR_2", "SR"]
+algos_names = ["SR-Ring", "SR-Centralized", "SR-Ring'", "SR-Centralized'", "SR"]
 
 ######### Experiment 1: Vary N for fixed K
-# Random_mode is defined in each scenario. 1 is uniform in [mu - epsilon, mu + epsilon] and 2 is bernoulli
-K = 10
-scenarios = ["uniform", "bernoulli"]
-N_vals = [20000, 40000, 60000, 80000, 100000]
+K = 200
+scenarios = ["bernoulli", "uniform"]
+N_vals = [25000, 50000, 75000, 100000]
 DIR_EXP = "experiment_N/"
 os.system("mkdir -p " + DIR_EXP)
 

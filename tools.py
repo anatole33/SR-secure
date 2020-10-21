@@ -215,17 +215,16 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         components = ["time BAI"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S1"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-        # If time values are too small the pie is not a pie
-        time_scaled = [time_per_component[i]*1000 for i in range(len(time_per_component))]
+
+        components = [components[0]] + ["" for i in range(1,K+1)] # print label only for BAI
 
         cm = plt.get_cmap('gist_rainbow')
-        NUM_COLORS = len(components) + 1
-        colors = []
+        NUM_COLORS = len(components)
+        colors = ["white"]
         for i in range(NUM_COLORS):
                 colors.append(cm(1.*i/NUM_COLORS))
         
-        wedges, _ = ax.pie(time_scaled, labels=components, colors=colors, textprops={'fontsize': 16})
-
+        wedges, _ = ax.pie(time_per_component, labels=components, colors=colors, textprops={'fontsize': 16})
         # Sperarate the slices of the pie with black color
         for w in wedges:
                 w.set_edgecolor('black')
@@ -237,10 +236,10 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         components = ["time BAI", "time Comp"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S2"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-        # If time values are too small the pie is not a pie
-        time_scaled = [time_per_component[i]*1000 for i in range(len(time_per_component))]
 
-        wedges, _ = ax.pie(time_scaled, labels=components, colors=colors, textprops={'fontsize': 16})
+        components = components[0:2] + ["" for i in range(1,K+1)] # print label only for BAI, Comp
+
+        wedges, _ = ax.pie(time_per_component, labels=components, colors=colors, textprops={'fontsize': 16})
 
         # Sperarate the slices of the pie with black color
         for w in wedges:
