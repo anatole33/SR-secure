@@ -9,8 +9,8 @@ The scripts to reproduce our figures are:
 
 - `script_N.py` generates Fig. 8(a) and 8(b) in the folder `experiment_N`.
 - `script_K.py` generates Fig. 8(c) in the folder `experiment_K`.
-- `script_SR_SP.py` generates Fig. 11(a) and 11(b) in the folder `experiment_SR_SP`.
-- `script_real_data.py` generates Fig. 8(d) and 11(c) in the folder `experiment_real_data`.
+- `script_SR_SP.py` generates Fig. 10(a) and 10(b) in the folder `experiment_SR_SP`.
+- `script_real_data.py` generates Fig. 8(d) and 10(c) in the folder `experiment_real_data`.
 
 All these scripts generate the figures using the results of our previous runs, saved as `*.txt` files in the corresponding folders. If you want to re-run the protocols, you simply need to uncomment the lines starting with `#os.system("python3 " + algo + ".py "...` in the scripts
 
