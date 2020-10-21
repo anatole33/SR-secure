@@ -12,8 +12,8 @@ nb_runs = 30
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
-algos = ["SR", "SR_S1", "SR_S2"]
-algos_names = ["SR", "SR-Ring", "SR-Centralized"]
+algos = ["SR", "SR_S2", "SR_S1"]
+algos_names = ["SR", "SR-Centralized", "SR-Ring"]
 
 ######### Experiment on real world data
 # Directory must already exist and scenarios must be defined
@@ -48,8 +48,8 @@ x = np.arange(len(scenarios))  # the label locations
 plt.xticks(x, scenarios)
 width = 0.5  # the width of the bars
 plt.bar(x - width/3, aggregates_time["SR"], width/3, color='paleturquoise', edgecolor='black', hatch='/')
-plt.bar(x , aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black', hatch='x')
-plt.bar(x + width/3, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
+plt.bar(x , aggregates_time["SR_S2"], width/3, color='royalblue', edgecolor='black', hatch='x')
+plt.bar(x + width/3, aggregates_time["SR_S1"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
 plt.ylabel('Time (seconds)')
 plt.legend(algos_names, bbox_to_anchor=(0.45, 1), ncol=1)
 plt.savefig(DIR_EXP + "plot_bernoulli.pdf")
@@ -57,8 +57,8 @@ plt.savefig(DIR_EXP + "plot_bernoulli.pdf")
 
 nb_runs = 5
 scenarios = ["Jester_small_uniform", "Jester_large_uniform", "MovieLens_uniform"]
-algos = ["SR", "SR_S1", "SR_S2", "SR_SP"]
-algos_names = ["SR", "SR-Ring", "SR-Centralized", "SR-Paillier"]
+algos = ["SR", "SR_S2", "SR_S1", "SR_SP"]
+algos_names = ["SR", "SR-Centralized", "SR-Ring", "SR-Paillier"]
 aggregates_time = dict()
 for algo in algos:
         aggregates_time[algo] = list()
@@ -84,8 +84,8 @@ x = np.arange(len(scenarios))  # the label locations
 plt.xticks(x, scenarios)
 width = 0.5  # the width of the bars
 plt.bar(x - width/2, aggregates_time["SR"], width/3, color='paleturquoise', edgecolor='black', hatch='/')
-plt.bar(x - width/6, aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black', hatch='x')
-plt.bar(x + width/6, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
+plt.bar(x - width/6, aggregates_time["SR_S2"], width/3, color='royalblue', edgecolor='black', hatch='x')
+plt.bar(x + width/6, aggregates_time["SR_S1"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
 plt.bar(x + width/2, aggregates_time["SR_SP"], width/3, color='cornflowerblue', edgecolor='black', hatch='+')
 plt.yscale('log')
 plt.ylabel('Time (seconds)')
