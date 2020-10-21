@@ -204,19 +204,15 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         plt.figure(figsize=(12, 4.2))
         plt.rcParams.update({'font.size':16})
         
-        #colors = ["#FF0033","#2D5DF5","#B75F31","#22792E","#413DE7","#19DBAD","#7653C2","#F3AE32","#1B9978","#5A82F1","#E9953F","#EBD86D","#3BECA4","#1E0968","#2952B0","#2E01A6","#2613DF","#5AC0AB","#1FD9EF","#441A71","#AA64AC","#960DC9","#BF6434","#21C13D","#1A8990","#B75EC4","#CFDE9F","#04350E","#B3CF0A","#E26F5D","#2EFD6E","#BEA469","#3F4696","#F46962","#162FE9","#E26CD6","#6433F1"]
-
         
-
         # SR_S1 N = 100 000
         ax = plt.subplot(121)                
         plt.title("Zoom on SR-Ring for " + right_message)
         K = len(right_aggregates_all["SR_S1"].keys()) - 3
-        components = ["time BAI"] + ["time R" + str(i) for i in range(1, K+1)]
+        components = ["time BAI", "time DO", "time U"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S1"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-
-        components = [components[0]] + ["" for i in range(1,K+1)] # print label only for BAI
+        components = [components[0]] + ["" for i in range(1,K+3)] # print label only for BAI
 
         cm = plt.get_cmap('gist_rainbow')
         NUM_COLORS = len(components)
@@ -233,11 +229,10 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         ax = plt.subplot(122)                
         plt.title("Zoom on SR-Centralized for " + right_message)
         K = len(right_aggregates_all["SR_S2"].keys()) - 4
-        components = ["time BAI", "time Comp"] + ["time R" + str(i) for i in range(1, K+1)]
+        components = ["time BAI", "time Comp", "time DO", "time U"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S2"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-
-        components = components[0:2] + ["" for i in range(1,K+1)] # print label only for BAI, Comp
+        components = components[0:2] + ["" for i in range(1,K+3)] # print label only for BAI, Comp
 
         wedges, _ = ax.pie(time_per_component, labels=components, colors=colors, textprops={'fontsize': 16})
 
