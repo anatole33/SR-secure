@@ -38,7 +38,7 @@ for scenario in scenarios:
                 for algo in algos:
                         print ("*" * 10 + " Scenario=", scenario, "N=", N, "algo=", algo)
                         output_file = DIR_EXP + "scenario_" + scenario + "_N_" + str(N) + "_" + algo + ".txt"
-                        os.system("python3 " + algo + ".py " + str(nb_runs) + " " + str(N) + " " + input_file + " " + output_file + " " + str(set_random))
+                        #os.system("python3 " + algo + ".py " + str(nb_runs) + " " + str(N) + " " + input_file + " " + output_file + " " + str(set_random))
                         R_list[algo], aggregate_time, aggregates_all[algo] = parse_json_output(output_file)
                         aggregates_time[algo].append(aggregate_time)
                 # check that all algorithms output the same result if the random seed is fixed
