@@ -11,12 +11,12 @@ nb_runs = 30
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
-algos = ["SR", "SR_1", "SR_2", "SR_S1", "SR_S2"]
-algos_names = ["SR", "SR-Ring'", "SR-Centralized'", "SR-Ring", "SR-Centralized"]
+algos = ["SR_S1", "SR_S2", "SR_1", "SR_2", "SR"]
+algos_names = ["SR-Ring", "SR-Centralized", "SR-Ring'", "SR-Centralized'", "SR"]
 
 
 ######### Experiment 2: Vary K for fixed N and random_mode = 1 (bernoulli)
-K_vals = [100, 200, 300, 400]
+K_vals = [250, 300, 350, 400]
 N = 100000
 DIR_EXP2 = "experiment_K/"
 os.system("mkdir -p " + DIR_EXP2)
