@@ -51,7 +51,7 @@ plt.bar(x - width/3, aggregates_time["SR"], width/3, color='paleturquoise', edge
 plt.bar(x , aggregates_time["SR_S1"], width/3, color='royalblue', edgecolor='black', hatch='x')
 plt.bar(x + width/3, aggregates_time["SR_S2"], width/3, color='deepskyblue', edgecolor='black', hatch='\\')
 plt.ylabel('Time (seconds)')
-plt.legend(algos_names, bbox_to_anchor=(0.4, 0.9), ncol=1)
+plt.legend(algos_names, bbox_to_anchor=(0.45, 1), ncol=1)
 plt.savefig(DIR_EXP + "plot_bernoulli.pdf")
 
 
@@ -89,5 +89,5 @@ plt.bar(x + width/6, aggregates_time["SR_S2"], width/3, color='deepskyblue', edg
 plt.bar(x + width/2, aggregates_time["SR_SP"], width/3, color='cornflowerblue', edgecolor='black', hatch='+')
 plt.yscale('log')
 plt.ylabel('Time (seconds)')
-plt.legend(algos_names, bbox_to_anchor=(0.4, 0.9), ncol=1)
+plt.legend(algos_names, bbox_to_anchor=(0.45, 1), ncol=1)
 plt.savefig(DIR_EXP + "plot_uniform.pdf")
