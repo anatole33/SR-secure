@@ -36,7 +36,7 @@ for K in K_vals:
                 for algo in algos:
                         print ("*" * 10 + " K=", K, "N=", N, "algo=", algo)
                         output_file = DIR + "K_" + str(K) + "_N_" + str(N) + "_" + algo + ".txt"
-                        os.system("python3 " + algo + ".py " + str(nb_runs) + " " + str(N) + " " + input_file + " " + output_file + " " + str(set_random))
+                        #os.system("python3 " + algo + ".py " + str(nb_runs) + " " + str(N) + " " + input_file + " " + output_file + " " + str(set_random))
                         R_list[algo], aggregate_time, aggregates_all[algo] = parse_json_output(output_file)
                         aggregates_time[algo + "_" + str(K)].append(aggregate_time)
 
