@@ -55,7 +55,7 @@ plt.legend(algos_names, bbox_to_anchor=(0.45, 1), ncol=1)
 plt.savefig(DIR_EXP + "plot_bernoulli.pdf")
 
 
-nb_runs = 5
+nb_runs = 10
 scenarios = ["Jester_small_uniform", "Jester_large_uniform", "MovieLens_uniform"]
 algos = ["SR", "SR_S2", "SR_S1", "SR_SP"]
 algos_names = ["SR", "SR-Centralized", "SR-Ring", "SR-Paillier"]
