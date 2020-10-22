@@ -3,7 +3,7 @@ We detail the experimental setup and results in Section 4.6 and 5.5 of our paper
 
 We implemented our protocols: SR-Ring (`SR_S1.py`), SR-Centralized (`SR_S2.py`), and SR-Paillier (`SR_SP.py`).
 
-We also implemented: the standard Successive Rejects (`SR.py`), two distributed protocols SR-Ring' (`SR_1.py`) and SR-Centralized' (`SR_2.py`) that are the same as SR-Ring, SR-Centralized, after removing all encryptions/decryptions such that all messages are communicated in clear between participants, and the old protocol proposed in the conference version of our paper (`SR_Secure_ISPEC`). 
+We also implemented: the standard Successive Rejects (`SR.py`), two distributed protocols SR-Ring' (`SR_1.py`) and SR-Centralized' (`SR_2.py`) that are the same as SR-Ring and SR-Centralized, after removing all encryptions/decryptions such that all messages are communicated in clear between participants, and the old protocol proposed in the conference version of our paper (`SR_Secure_ISPEC.py`). 
 
 The scripts to reproduce our figures are:
 
