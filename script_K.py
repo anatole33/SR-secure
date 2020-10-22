@@ -7,7 +7,7 @@ from tools import parse_json_output, check_results, plot_lines_K
 import warnings
 warnings.simplefilter("ignore")
 
-nb_runs = 30
+nb_runs = 100
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
