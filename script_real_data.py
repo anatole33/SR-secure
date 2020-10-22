@@ -8,7 +8,7 @@ import numpy as np
 import warnings
 warnings.simplefilter("ignore")
 
-nb_runs = 30
+nb_runs = 1000
 # set_random != 0 means that random seed will be chosen classicaly, using time
 # set_random == 0 means that random seed is fixed to 1 each time an algo is executed nb_runs times
 set_random = 1
@@ -40,7 +40,6 @@ for scenario in scenarios:
         if set_random == 0:
                 check_results(R_list, algos)
 
-
 # plot bars
 plt.figure(figsize=(8, 5))
 plt.rcParams.update({'font.size':14})
@@ -55,7 +54,7 @@ plt.legend(algos_names, bbox_to_anchor=(0.45, 1), ncol=1)
 plt.savefig(DIR_EXP + "plot_bernoulli.pdf")
 
 
-nb_runs = 10
+nb_runs = 100
 scenarios = ["Jester_small_uniform", "Jester_large_uniform", "MovieLens_uniform"]
 algos = ["SR", "SR_S2", "SR_S1", "SR_SP"]
 algos_names = ["SR", "SR-Centralized", "SR-Ring", "SR-Paillier"]
