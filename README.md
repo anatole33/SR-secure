@@ -1,5 +1,5 @@
 This code allows to reproduce the empirical evaluation from our paper **Secure Protocols for Best Arm Identification in Stochastic Multi-Armed Bandits**.
-We detail the experimental setup and results in Section 4.6 and 5.5 of our paper.
+We detail the experimental setup and results in Section 4.3 and 5.2 of our paper.
 
 We implemented our protocols: SR-Ring (`SR_S1.py`), SR-Centralized (`SR_S2.py`), and SR-Paillier (`SR_SP.py`).
 
