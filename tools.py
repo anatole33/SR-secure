@@ -212,7 +212,7 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         components = ["time BAI", "time DO", "time U"] + ["time R" + str(i) for i in range(1, K+1)]
         time_per_component = [right_aggregates_all["SR_S1"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-        components = [components[0]] + ["" for i in range(1,K+3)] # print label only for BAI
+        components = ["Server"] + ["" for i in range(1,K+3)] # print label only for BAI
 
         cm = plt.get_cmap('gist_rainbow')
         NUM_COLORS = len(components)
@@ -233,7 +233,7 @@ def plot_lines_and_pie(scenario, algos, algos_names, left_xlabel, left_xlog, lef
         components = ["time BAI", "time DO", "time U"] + ["time R" + str(i) for i in range(1, K+1)] + ["time Comp"]
         time_per_component = [right_aggregates_all["SR_S2"][component] for component in components]
         components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-        components = [components[0]] + ["" for i in range(1,K+3)] + [components[K+3]] # print label only for BAI, Comp
+        components = ["Server"] + ["" for i in range(1,K+3)] + [components[K+3]] # print label only for BAI, Comp
 
         wedges, _ = ax.pie(time_per_component, labels=components, colors=colors, textprops={'fontsize': 16})
 
