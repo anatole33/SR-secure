@@ -75,8 +75,17 @@ plt.rcParams.update({'font.size':14})
 plt.title("Zoom on SR-Paillier, N=" + str(my_N) + ", K=" + str(my_K))
 components = ["time Comp", "time DO", "time BAI"]
 time_per_component = [aggregates_all["SR_SP"][component] for component in components]
-components = list(map (lambda x: x[5:], components)) # remove "time " from the left of each key
-wedges, _ = plt.pie(time_per_component, labels=components, colors=["gray", "black", "pink"], textprops={'fontsize': 18})
+
+time_per_component = [time_per_component[0]] + [time_per_component[1]/my_K] * my_K + [time_per_component[-1]]
+components = ["Comp"] + [""] * my_K + ["Server"]
+
+colors=["gray"]
+cm = plt.get_cmap('gist_rainbow')
+for i in range(my_K):
+  colors.append(cm(1.*i/my_K))
+colors.append("black")
+
+wedges, _ = plt.pie(time_per_component, labels=components, colors=colors, textprops={'fontsize': 18})
 for w in wedges:
 	w.set_edgecolor("none")
 plt.savefig(DIR + "plot_pie_SR_P" + ".pdf")
