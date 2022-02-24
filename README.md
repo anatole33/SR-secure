@@ -1,5 +1,18 @@
-This code allows to reproduce the empirical evaluation from our paper **Secure Protocols for Best Arm Identification in Stochastic Multi-Armed Bandits**.
-We detail the experimental setup and results in Section 4.3 and 5.2 of our paper.
+This code allows to reproduce the empirical evaluation from our TDSC paper **Secure Protocols for Best Arm Identification in Federated Stochastic Multi-Armed Bandits**.
+If you use our code, please cite:
+
+```
+@article{CDLS22,
+  author    = {Ciucanu, R. and Delabrouille, A. and Lafourcade, P. and Soare, M.},
+  title     = {{Secure Protocols for Best Arm Identification in Federated Stochastic Multi-Armed Bandits}},
+  journal   = {IEEE Transactions on Dependable and Secure Computing (TDSC)},
+  year      = {2022},
+  note      = {Accepted, to appear}
+}
+```
+
+
+We detail next the experimental setup and results in Section 5.3 and 6.2 of our paper.
 
 We implemented our protocols: SR-Ring (`SR_S1.py`), SR-Centralized (`SR_S2.py`), and SR-Paillier (`SR_SP.py`).
 
@@ -7,10 +20,10 @@ We also implemented: the standard Successive Rejects (`SR.py`), two distributed 
 
 The scripts to reproduce our figures are:
 
-- `script_N.py` generates Fig. 8(a) and 8(b) in the folder `experiment_N`.
-- `script_K.py` generates Fig. 8(c) in the folder `experiment_K`.
-- `script_SR_SP.py` generates Fig. 10(a) and 10(b) in the folder `experiment_SR_SP`.
-- `script_real_data.py` generates Fig. 8(d) and 10(c) in the folder `experiment_real_data`.
+- `script_N.py` generates Fig. 7(a) and 7(b) in the folder `experiment_N`.
+- `script_K.py` generates Fig. 7(c) in the folder `experiment_K`.
+- `script_SR_SP.py` generates Fig. 9(a) and 9(b) in the folder `experiment_SR_SP`.
+- `script_real_data.py` generates Fig. 7(d) and 9(c) in the folder `experiment_real_data`.
 
 All these scripts generate the figures using the results of our previous runs, saved as `*.txt` files in the corresponding folders. If you want to re-run the protocols, you simply need to uncomment the lines starting with `#os.system("python3 " + algo + ".py "...` in the scripts
 
