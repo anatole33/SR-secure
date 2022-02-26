@@ -1,4 +1,4 @@
-This code allows to reproduce the empirical evaluation from our TDSC paper **Secure Protocols for Best Arm Identification in Federated Stochastic Multi-Armed Bandits**.
+This code allows to reproduce the empirical evaluation from our TDSC paper **[Secure Protocols for Best Arm Identification in Federated Stochastic Multi-Armed Bandits](https://ieeexplore.ieee.org/document/9721650)**.
 If you use our code, please cite:
 
 ```
