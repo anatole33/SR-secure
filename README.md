@@ -2,12 +2,14 @@ This code allows to reproduce the empirical evaluation from our TDSC paper **[Se
 If you use our code, please cite:
 
 ```
-@article{CDLS22,
+@article{CDLS23,
   author    = {Ciucanu, R. and Delabrouille, A. and Lafourcade, P. and Soare, M.},
   title     = {{Secure Protocols for Best Arm Identification in Federated Stochastic Multi-Armed Bandits}},
   journal   = {IEEE Transactions on Dependable and Secure Computing (TDSC)},
-  year      = {2022},
-  note      = {Accepted, to appear}
+  volume    = {20},
+  number    = {2},
+  pages     = {1378--1389},
+  year      = {2023}
 }
 ```
 
